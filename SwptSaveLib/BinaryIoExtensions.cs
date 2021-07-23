@@ -23,21 +23,21 @@ namespace SwptSaveLib
     internal static class BinaryIoExtensions
     {
         /// <summary>
-        /// Reads an ASCII string that is prefixed with a length in bytes
+        /// Reads an UTF-8 string that is prefixed with a length in bytes
         /// </summary>
         public static string ReadPrefixedString(this BinaryReader reader)
         {
             byte len = reader.ReadByte();
             byte[] data = reader.ReadBytes(len);
-            return Encoding.ASCII.GetString(data);
+            return Encoding.UTF8.GetString(data);
         }
 
         /// <summary>
-        /// Writes an ASCII string that is prefixed with a length in bytes
+        /// Writes an UTF-8 string that is prefixed with a length in bytes
         /// </summary>
         public static void WritePrefixedString(this BinaryWriter writer, string value)
         {
-            byte[] data = Encoding.ASCII.GetBytes(value);
+            byte[] data = Encoding.UTF8.GetBytes(value);
             writer.Write((byte)data.Length);
             writer.Write(data);
         }
