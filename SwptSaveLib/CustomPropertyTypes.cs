@@ -22,6 +22,8 @@ namespace SwptSaveLib
         public float X { get; set; }
         public float Y { get; set; }
 
+        public Vector2() { }
+        public Vector2(float x, float y) { X = x; Y = y; }
         public Vector2 Clone()
         {
             return new Vector2() { X = X, Y = Y };
@@ -54,7 +56,8 @@ namespace SwptSaveLib
         public float X { get; set; }
         public float Y { get; set; }
         public float Z { get; set; }
-
+        public Vector3() { }
+        public Vector3(float x, float y, float z) { X = x; Y = y; Z = z; }
         public Vector3 Clone()
         {
             return new Vector3() { X = X, Y = Y, Z = Z };

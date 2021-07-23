@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{84517DE0-B680-4414-ABF8-6B46C23F3D81}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SaveEditor</RootNamespace>
+    <AssemblyName>SaveEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>game.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\GameConstants.cs" />
+    <Compile Include="Data\Item.cs" />
+    <Compile Include="Data\KeyValue.cs" />
+    <Compile Include="Data\SaveExtensions.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OpenSaveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpenSaveForm.Designer.cs">
+      <DependentUpon>OpenSaveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\SaveThumbnail.cs" />
+    <Compile Include="UI\ComboBoxPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\FlowLayoutPanelPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\ISaveView.cs" />
+    <Compile Include="UI\IInputView.cs" />
+    <Compile Include="UI\ItemEditView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ItemEditView.Designer.cs">
+      <DependentUpon>ItemEditView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\InputView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\InputView.Designer.cs">
+      <DependentUpon>InputView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ItemListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ItemListView.Designer.cs">
+      <DependentUpon>ItemListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SaveView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SaveView.Designer.cs">
+      <DependentUpon>SaveView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\BinaryIO.cs" />
+    <Compile Include="Util\ByteArrayInputSteam.cs" />
+    <Compile Include="Util\ByteArrayOutputSteam.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OpenSaveForm.resx">
+      <DependentUpon>OpenSaveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\ItemEditView.resx">
+      <DependentUpon>ItemEditView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\InputView.resx">
+      <DependentUpon>InputView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ItemListView.resx">
+      <DependentUpon>ItemListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SaveView.resx">
+      <DependentUpon>SaveView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="saveeditor.conf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="game.ico" />
+    <Content Include="readme.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SwptSaveLib\SwptSaveLib.csproj">
+      <Project>{88e936f1-90d1-4e57-a834-e3e7fbc43ef9}</Project>
+      <Name>SwptSaveLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

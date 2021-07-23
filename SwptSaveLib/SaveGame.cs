@@ -47,13 +47,16 @@ namespace SwptSaveLib
             {
                 foreach (string path in System.IO.Directory.GetFiles(directory))
                 {
-                    try
+                    if (path.ToLower().EndsWith(".txt"))
                     {
-                        game.mFiles.Add(SaveFile.Load(path));
-                    }
-                    catch
-                    {
-                        // Just skip files that don't load
+                        try
+                        {
+                            game.mFiles.Add(SaveFile.Load(path));
+                        }
+                        catch
+                        {
+                            // Just skip files that don't load
+                        }
                     }
                 }
             }

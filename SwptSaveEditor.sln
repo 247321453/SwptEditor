@@ -7,20 +7,38 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwptSaveEditor", "SwptSaveE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwptSaveLib", "SwptSaveLib\SwptSaveLib.csproj", "{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveEditor", "SaveEditor\SaveEditor.csproj", "{84517DE0-B680-4414-ABF8-6B46C23F3D81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Debug|x64.ActiveCfg = Debug|x64
 		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Debug|x64.Build.0 = Debug|x64
+		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Release|Any CPU.ActiveCfg = Release|x64
 		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Release|x64.ActiveCfg = Release|x64
 		{2EDEAB00-3FBE-4B2B-8B08-4E463D3C7170}.Release|x64.Build.0 = Release|x64
+		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Debug|x64.ActiveCfg = Debug|x64
 		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Debug|x64.Build.0 = Debug|x64
+		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Release|x64.ActiveCfg = Release|x64
 		{88E936F1-90D1-4E57-A834-E3E7FBC43EF9}.Release|x64.Build.0 = Release|x64
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Debug|x64.Build.0 = Debug|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Release|x64.ActiveCfg = Release|Any CPU
+		{84517DE0-B680-4414-ABF8-6B46C23F3D81}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,7 +30,11 @@ namespace SwptSaveLib
 
         public string Name { get; private set; }
 
+        public string FilePath { get => mPath; }
+
         public IReadOnlyList<SaveProperty> Properties => mProperties;
+
+        public int Count { get => mProperties.Count; }
 
         internal SaveFile(string path)
         {
@@ -131,6 +135,16 @@ namespace SwptSaveLib
         public int IndexOfProperty(SaveProperty property)
         {
             return mProperties.IndexOf(property);
+        }
+
+        public SaveProperty Get(string name)
+        {
+            int index = IndexOfProperty(name, 0);
+            if (index >= 0)
+            {
+                return mProperties[index];
+            }
+            return null;
         }
 
         public int IndexOfProperty(string propertyName, int startIndex = 0)
