@@ -27,7 +27,7 @@ namespace SwptSaveLib
         /// </summary>
         public static string ReadPrefixedString(this BinaryReader reader)
         {
-            byte len = reader.ReadByte();
+            int len = (int)(reader.ReadByte() & 0xFF);
             byte[] data = reader.ReadBytes(len);
             return Encoding.UTF8.GetString(data);
         }
