@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
@@ -24,7 +25,7 @@ namespace SwptSaveLib.ValueTypes
     /// <summary>
     /// Represents a SavePropertry value of type Array
     /// </summary>
-    public class ArrayValue : SaveValue
+    public class ArrayValue : SaveValue, IEnumerable<SaveValue>
     {
         private ObservableCollection<SaveValue> mData;
 
@@ -58,7 +59,7 @@ namespace SwptSaveLib.ValueTypes
 
         public SaveValueType ItemType { get; }
 
-        public override string DisplayType => $"{ItemType.GetDisplayName()} {Type.GetDisplayName()}";
+        public override string DisplayType => $"{ItemType.DisplayName} {Type.DisplayName}";
 
         public int Count => mData.Count;
 
@@ -69,7 +70,7 @@ namespace SwptSaveLib.ValueTypes
         }
 
         public ArrayValue(SaveValueType itemType)
-            : base(SaveValueType.Array)
+            : base(SaveValueTypes.Array)
         {
             Data = mData = new ObservableCollection<SaveValue>();
             ItemType = itemType;
@@ -190,6 +191,16 @@ namespace SwptSaveLib.ValueTypes
         private void Data_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             NotifyPropertyChanged(nameof(DisplayString));
+        }
+
+        IEnumerator<SaveValue> IEnumerable<SaveValue>.GetEnumerator()
+        {
+            return mData.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)mData).GetEnumerator();
         }
     }
 }
