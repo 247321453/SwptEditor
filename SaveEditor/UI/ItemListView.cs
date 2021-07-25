@@ -219,6 +219,13 @@ namespace SaveEditor.UI
                     cb_surfix.Text = row.SubItems[INDEX_SURFIX].Text;
 
                     tb_name.Text = item.Name.GetStringValue();
+                    if (tb_name.Text.EndsWith(" "))
+                    {
+                        lb_bottom.Text = "注意物品名后面带有空格";
+                    }
+                    else {
+                        lb_bottom.Text = "";
+                    }
                     var p = item.GetPrefix(false);
                     tb_prefix.Text = p == null ? string.Empty : p.GetStringValue();
                     p = item.GetSurfix(false);

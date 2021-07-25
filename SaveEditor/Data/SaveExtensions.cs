@@ -29,7 +29,7 @@ namespace SwptSaveLib
         public static int GetLevel(this SaveFile that)
         {
             var tag = that.Get("level");
-            if (tag != null && tag.IsIntType())
+            if (tag != null && tag.IsInt32Type())
             {
                 return tag.GetInt32Value();
             }
@@ -148,7 +148,7 @@ namespace SwptSaveLib
         }
         public static SaveProperty CreateStorage(this SaveFile that, string name)
         {
-            SaveProperty property = new SaveProperty("idArray" + name + " Storage", new ArrayValue(SaveValueType.Int32));
+            SaveProperty property = new SaveProperty("idArray" + name + " Storage", new ArrayValue(SaveValueTypes.Int32));
             that.InsertProperty(0, property);
             return property;
         }
@@ -213,7 +213,13 @@ namespace SwptSaveLib
                 string dir = Path.GetDirectoryName(path);
                 string name = Path.GetFileNameWithoutExtension(path);
                 Console.WriteLine(">备份存档:" + name);
-                bak = Path.Combine(dir, name + ".bak");
+                if (that.IsItemMode())
+                {
+                    bak = Path.Combine(dir, name + ".txt."+ DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss"));
+                }
+                else {
+                    bak = Path.Combine(dir, name + ".bak");
+                }
                 if (File.Exists(bak))
                 {
                     File.Delete(bak);
@@ -278,47 +284,42 @@ namespace SwptSaveLib
         #endregion
 
         #region type
-        public static bool IsIntType(this SaveProperty that)
+        public static bool IsInt32Type(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Int32;
+            return that.Value.Type == SaveValueTypes.Int32;
         }
         public static bool IsStringType(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.String;
+            return that.Value.Type == SaveValueTypes.String;
         }
         public static bool IsVector3Type(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Vector3;
+            return that.Value.Type == SaveValueTypes.Vector3;
         }
         public static bool IsVector2Type(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Vector2;
+            return that.Value.Type == SaveValueTypes.Vector2;
         }
 
-        public static bool IsIntArrayType(this SaveProperty that)
+        public static bool IsInt32ArrayType(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Array && ((ArrayValue)that.Value).ItemType == SaveValueType.Int32;
+            return that.Value.Type == SaveValueTypes.Array && ((ArrayValue)that.Value).ItemType == SaveValueTypes.Int32;
         }
         public static bool IsStringArrayType(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Array && ((ArrayValue)that.Value).ItemType == SaveValueType.String;
+            return that.Value.Type == SaveValueTypes.Array && ((ArrayValue)that.Value).ItemType == SaveValueTypes.String;
         }
         public static bool IsBoolType(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Bool;
+            return that.Value.Type == SaveValueTypes.Bool;
         }
-        public static bool IsFloatType(this SaveProperty that)
+        public static bool IsSingleType(this SaveProperty that)
         {
-            return that.Value.Type == SaveValueType.Single;
+            return that.Value.Type == SaveValueTypes.Single;
         }
         public static Vector2 GetVector2Value(this SaveProperty that)
         {
-
-            if (that.IsVector2Type())
-            {
-                return ((Vector2Value)that.Value).TypedData;
-            }
-            return null;
+            return that.Value.GetData<Vector2>(null);
         }
         public static void SetVector2Value(this SaveProperty that, Vector2 val)
         {
@@ -329,12 +330,7 @@ namespace SwptSaveLib
         }
         public static Vector3 GetVector3Value(this SaveProperty that)
         {
-
-            if (that.IsVector3Type())
-            {
-                return ((Vector3Value)that.Value).TypedData;
-            }
-            return null;
+            return that.Value.GetData<Vector3>(null);
         }
         public static void SetVector3Value(this SaveProperty that, Vector3 val)
         {
@@ -346,11 +342,7 @@ namespace SwptSaveLib
         public static bool GetBoolValue(this SaveProperty that, bool def = false)
         {
 
-            if (that.IsBoolType())
-            {
-                return ((BoolValue)that.Value).TypedData;
-            }
-            return def;
+            return that.Value.GetData<bool>(def);
         }
 
         public static void SetBoolValue(this SaveProperty that, bool val)
@@ -361,36 +353,28 @@ namespace SwptSaveLib
             }
         }
 
-        public static int GetInt32Value(this SaveProperty that, int def = 0)
+        public static Int32 GetInt32Value(this SaveProperty that, Int32 def = 0)
         {
 
-            if (that.IsIntType())
-            {
-                return ((Int32Value)that.Value).TypedData;
-            }
-            return def;
+            return that.Value.GetData<Int32>(def);
         }
 
-        public static void SetInt32Value(this SaveProperty that, int val)
+        public static void SetInt32Value(this SaveProperty that, Int32 val)
         {
-            if (that.IsIntType())
+            if (that.IsInt32Type())
             {
                 ((Int32Value)that.Value).TypedData = val;
             }
         }
-        public static float GetSingleValue(this SaveProperty that, float def = 0)
+        public static Single GetSingleValue(this SaveProperty that, Single def = 0)
         {
 
-            if (that.IsFloatType())
-            {
-                return ((SingleValue)that.Value).TypedData;
-            }
-            return def;
+            return that.Value.GetData<Single>(def);
         }
 
-        public static void SetSingleValue(this SaveProperty that, float val)
+        public static void SetSingleValue(this SaveProperty that, Single val)
         {
-            if (that.IsFloatType())
+            if (that.IsSingleType())
             {
                 ((SingleValue)that.Value).TypedData = val;
             }
@@ -398,11 +382,7 @@ namespace SwptSaveLib
         public static string GetStringValue(this SaveProperty that, string def = null)
         {
 
-            if (that.IsStringType())
-            {
-                return ((StringValue)that.Value).TypedData;
-            }
-            return def;
+            return that.Value.GetData<string>(def);
         }
         public static void SetStringValue(this SaveProperty that, string val)
         {
@@ -414,7 +394,7 @@ namespace SwptSaveLib
         public static int[] GetIntArray(this SaveProperty that)
         {
 
-            if (that.IsIntArrayType())
+            if (that.IsInt32ArrayType())
             {
                 var arr = (ArrayValue)that.Value;
                 int N = arr.Count;
@@ -431,7 +411,7 @@ namespace SwptSaveLib
         public static void SetIntArray(this SaveProperty that, int[] val)
         {
 
-            if (that.IsIntArrayType())
+            if (that.IsInt32ArrayType())
             {
                 var arr = (ArrayValue)that.Value;
                 arr.ClearItems();
@@ -440,7 +420,7 @@ namespace SwptSaveLib
                     int N = val.Length;
                     for (int i = 0; i < N; i++)
                     {
-                        var v = (Int32Value)SaveValue.Create(SaveValueType.Int32);
+                        var v = (Int32Value)SaveValue.Create(SaveValueTypes.Int32);
                         v.TypedData = val[i];
                         arr.AddItem(v);
                     }
@@ -476,7 +456,7 @@ namespace SwptSaveLib
                     int N = val.Length;
                     for (int i = 0; i < N; i++)
                     {
-                        var v = (StringValue)SaveValue.Create(SaveValueType.String);
+                        var v = (StringValue)SaveValue.Create(SaveValueTypes.String);
                         v.TypedData = val[i];
                         arr.AddItem(v);
                     }

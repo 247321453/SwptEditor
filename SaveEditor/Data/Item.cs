@@ -1,7 +1,4 @@
-﻿using SwptSaveLib;
-using SwptSaveLib.ValueTypes;
-using System;
-
+﻿
 namespace SwptSaveLib
 {
     public class Item
@@ -76,7 +73,7 @@ namespace SwptSaveLib
         {
             if (_prefix == null && create)
             {
-                _prefix = new SaveProperty("prefix" + ID, new StringValue());
+                _prefix = new SaveProperty("prefix" + ID, new SwptSaveLib.ValueTypes.StringValue());
                 int index;
                 if (_surfix != null)
                 {
@@ -106,7 +103,7 @@ namespace SwptSaveLib
         {
             if (_surfix == null && create)
             {
-                _surfix = new SaveProperty("surfix" + ID, new StringValue());
+                _surfix = new SaveProperty("surfix" + ID, new SwptSaveLib.ValueTypes.StringValue());
                 int index = mSaveFile.IndexOfProperty(Name);
                 mSaveFile.InsertProperty(index, _surfix);
             }

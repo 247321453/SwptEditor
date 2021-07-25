@@ -1,4 +1,5 @@
 ﻿using SwptSaveLib;
+using System;
 using System.Windows.Forms;
 
 namespace SaveEditor.UI
@@ -40,7 +41,7 @@ namespace SaveEditor.UI
                 {
                     tb_input.ReadOnly = true;
                 }
-                if (gv.IsIntType())
+                if (gv.IsInt32Type())
                 {
                     tb_input.Text = "" + gv.GetInt32Value();
                 }
@@ -48,7 +49,7 @@ namespace SaveEditor.UI
                 {
                     tb_input.Text = gv.GetStringValue();
                 }
-                else if (gv.IsFloatType())
+                else if (gv.IsSingleType())
                 {
                     tb_input.Text = "" + gv.GetSingleValue();
                 }
@@ -56,7 +57,7 @@ namespace SaveEditor.UI
                 {
                     tb_input.Text = string.Join("|", gv.GetStringArray());
                 }
-                else if (gv.IsIntArrayType())
+                else if (gv.IsInt32ArrayType())
                 {
                     tb_input.Text = string.Join(", ", gv.GetIntArray());
                 }
@@ -91,18 +92,18 @@ namespace SaveEditor.UI
                 var gv = this.Value;
                 if (gv != null)
                 {
-                    if (gv.IsIntType())
+                    if (gv.IsInt32Type())
                     {
 
-                        gv.SetInt32Value(int.Parse(tb_input.Text.Trim()));
+                        gv.SetInt32Value(Int32.Parse(tb_input.Text.Trim()));
                     }
                     else if (gv.IsStringType())
                     {
                         gv.SetStringValue(tb_input.Text);
                     }
-                    else if (gv.IsFloatType())
+                    else if (gv.IsSingleType())
                     {
-                        gv.SetSingleValue(float.Parse(tb_input.Text.Trim()));
+                        gv.SetSingleValue(Single.Parse(tb_input.Text.Trim()));
                     }
                     else if (gv.IsStringArrayType())
                     {
@@ -116,7 +117,7 @@ namespace SaveEditor.UI
                             gv.SetStringArray(arr);
                         }
                     }
-                    else if (gv.IsIntArrayType())
+                    else if (gv.IsInt32ArrayType())
                     {
                         if (string.IsNullOrEmpty(tb_input.Text.Trim()))
                         {

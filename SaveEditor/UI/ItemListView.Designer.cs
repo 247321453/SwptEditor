@@ -50,6 +50,7 @@
             this.tb_surfix = new System.Windows.Forms.TextBox();
             this.tb_prefix = new System.Windows.Forms.TextBox();
             this.tb_name = new System.Windows.Forms.TextBox();
+            this.lb_bottom = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // list_items
@@ -268,10 +269,22 @@
             this.tb_name.Size = new System.Drawing.Size(209, 23);
             this.tb_name.TabIndex = 6;
             // 
+            // lb_bottom
+            // 
+            this.lb_bottom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lb_bottom.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_bottom.ForeColor = System.Drawing.Color.Red;
+            this.lb_bottom.Location = new System.Drawing.Point(728, 479);
+            this.lb_bottom.Name = "lb_bottom";
+            this.lb_bottom.Size = new System.Drawing.Size(272, 21);
+            this.lb_bottom.TabIndex = 7;
+            this.lb_bottom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // ItemListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lb_bottom);
             this.Controls.Add(this.tb_name);
             this.Controls.Add(this.tb_prefix);
             this.Controls.Add(this.tb_surfix);
@@ -322,5 +335,6 @@
         private System.Windows.Forms.TextBox tb_surfix;
         private System.Windows.Forms.TextBox tb_prefix;
         private System.Windows.Forms.TextBox tb_name;
+        private System.Windows.Forms.Label lb_bottom;
     }
 }

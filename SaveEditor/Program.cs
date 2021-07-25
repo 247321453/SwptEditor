@@ -5,7 +5,7 @@ namespace SaveEditor
 {
     static class Program
     {
-        public const string VERSION = "2.0.0";
+        public const string VERSION = "2.0.4";
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>

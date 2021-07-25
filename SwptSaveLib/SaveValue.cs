@@ -92,9 +92,9 @@ namespace SwptSaveLib
             return value;
         }
 
-        public T GetData<T>()
+        public T GetData<T>(T def = default(T))
         {
-            return Data is T ? (T)Data : default;
+            return Data is T ? (T)Data : def;
         }
     }
 
