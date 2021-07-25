@@ -221,7 +221,7 @@ namespace SaveEditor.UI
                     tb_name.Text = item.Name.GetStringValue();
                     if (tb_name.Text.EndsWith(" "))
                     {
-                        lb_bottom.Text = "注意物品名后面带有空格";
+                        lb_bottom.Text = "注意英文物品名后面带有空格";
                     }
                     else {
                         lb_bottom.Text = "";
