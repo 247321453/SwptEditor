@@ -47,6 +47,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.tb_surfix = new System.Windows.Forms.TextBox();
+            this.tb_prefix = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // list_items
@@ -107,6 +110,7 @@
             this.cb_name.Name = "cb_name";
             this.cb_name.Size = new System.Drawing.Size(260, 28);
             this.cb_name.TabIndex = 1;
+            this.cb_name.SelectedIndexChanged += new System.EventHandler(this.cb_name_SelectedIndexChanged);
             // 
             // cb_surfix
             // 
@@ -117,6 +121,7 @@
             this.cb_surfix.Name = "cb_surfix";
             this.cb_surfix.Size = new System.Drawing.Size(260, 28);
             this.cb_surfix.TabIndex = 1;
+            this.cb_surfix.SelectedIndexChanged += new System.EventHandler(this.cb_surfix_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -147,6 +152,7 @@
             this.cb_prefix.Name = "cb_prefix";
             this.cb_prefix.Size = new System.Drawing.Size(260, 28);
             this.cb_prefix.TabIndex = 1;
+            this.cb_prefix.SelectedIndexChanged += new System.EventHandler(this.cb_prefix_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -232,10 +238,43 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // tb_surfix
+            // 
+            this.tb_surfix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_surfix.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_surfix.Location = new System.Drawing.Point(779, 248);
+            this.tb_surfix.Name = "tb_surfix";
+            this.tb_surfix.ReadOnly = true;
+            this.tb_surfix.Size = new System.Drawing.Size(209, 23);
+            this.tb_surfix.TabIndex = 6;
+            // 
+            // tb_prefix
+            // 
+            this.tb_prefix.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_prefix.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_prefix.Location = new System.Drawing.Point(778, 187);
+            this.tb_prefix.Name = "tb_prefix";
+            this.tb_prefix.ReadOnly = true;
+            this.tb_prefix.Size = new System.Drawing.Size(209, 23);
+            this.tb_prefix.TabIndex = 6;
+            // 
+            // tb_name
+            // 
+            this.tb_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_name.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tb_name.Location = new System.Drawing.Point(778, 123);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.ReadOnly = true;
+            this.tb_name.Size = new System.Drawing.Size(209, 23);
+            this.tb_name.TabIndex = 6;
+            // 
             // ItemListView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.tb_name);
+            this.Controls.Add(this.tb_prefix);
+            this.Controls.Add(this.tb_surfix);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -280,5 +319,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox tb_surfix;
+        private System.Windows.Forms.TextBox tb_prefix;
+        private System.Windows.Forms.TextBox tb_name;
     }
 }

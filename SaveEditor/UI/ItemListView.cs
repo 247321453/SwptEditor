@@ -217,6 +217,12 @@ namespace SaveEditor.UI
                     cb_name.Text = row.SubItems[INDEX_NAME].Text;
                     cb_prefix.Text = row.SubItems[INDEX_PREFIX].Text;
                     cb_surfix.Text = row.SubItems[INDEX_SURFIX].Text;
+
+                    tb_name.Text = item.Name.GetStringValue();
+                    var p = item.GetPrefix(false);
+                    tb_prefix.Text = p == null ? string.Empty : p.GetStringValue();
+                    p = item.GetSurfix(false);
+                    tb_surfix.Text = p == null ? string.Empty : p.GetStringValue();
                 }
             }
         }
@@ -231,7 +237,7 @@ namespace SaveEditor.UI
             {
                 try
                 {
-                    string val = cb_name.Text.Trim();
+                    string val = cb_name.Text;
                     int index = cb_name.SelectedIndex;
                     if (index >= 0)
                     {
@@ -247,7 +253,7 @@ namespace SaveEditor.UI
                     }
                     gv.Position.SetVector2Value(new Vector2(i_arr[0], i_arr[1]));
                     //prefix
-                    val = cb_prefix.Text.Trim();
+                    val = cb_prefix.Text;
                     index = cb_prefix.SelectedIndex;
                     if (index >= 0)
                     {
@@ -264,7 +270,7 @@ namespace SaveEditor.UI
                         gv.DeletePrefix();
                     }
                     //surfix
-                    val = cb_surfix.Text.Trim();
+                    val = cb_surfix.Text;
                     index = cb_surfix.SelectedIndex;
                     if (index >= 0)
                     {
@@ -329,6 +335,33 @@ namespace SaveEditor.UI
             }
             else {
                 button1.Text = "修改并保存";
+            }
+        }
+
+        private void cb_surfix_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = cb_surfix.SelectedIndex;
+            if (index >= 0)
+            {
+                tb_name.Text = ((KeyValue)cb_surfix.Items[index]).Key;
+            }
+        }
+
+        private void cb_prefix_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = cb_prefix.SelectedIndex;
+            if (index >= 0)
+            {
+                tb_name.Text = ((KeyValue)cb_prefix.Items[index]).Key;
+            }
+        }
+
+        private void cb_name_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = cb_name.SelectedIndex;
+            if (index >= 0)
+            {
+                tb_name.Text = ((KeyValue)cb_name.Items[index]).Key;
             }
         }
     }

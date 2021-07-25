@@ -77,7 +77,7 @@ namespace SaveEditor.UI
                 var gv = this.Value;
                 if (gv != null)
                 {
-                    string val = tb_name.Text.Trim();
+                    string val = tb_name.Text;
                     int index = tb_name.SelectedIndex;
                     if (index >= 0)
                     {
@@ -100,7 +100,7 @@ namespace SaveEditor.UI
                     }
                     gv.Position.SetVector2Value(new Vector2(i_arr[0], i_arr[1]));
                     //prefix
-                    val = tb_prefix.Text.Trim();
+                    val = tb_prefix.Text;
                     index = tb_prefix.SelectedIndex;
                     if (index >= 0)
                     {
@@ -115,7 +115,7 @@ namespace SaveEditor.UI
                         gv.DeletePrefix();
                     }
                     //surfix
-                    val = tb_surfix.Text.Trim();
+                    val = tb_surfix.Text;
                     index = tb_surfix.SelectedIndex;
                     if (index >= 0)
                     {

@@ -540,6 +540,17 @@ namespace SaveEditor
             {
                 ItemIds = GetStorageItems(save, "Rowena");
             }
+            else if (allToolStripMenuItem.Checked) {
+
+                List<int> list = new List<int>();
+                list.AddRange(GetEquipItems(save, "Player"));
+                list.AddRange(GetStorageItems(save, "Player"));
+                foreach (var name in GameConstants.Companions) {
+                    list.AddRange(GetEquipItems(save, name));
+                    list.AddRange(GetStorageItems(save, name));
+                }
+                ItemIds = list;
+            }
             else
             {
                 ItemIds = null;
